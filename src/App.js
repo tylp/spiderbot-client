@@ -1,25 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+import { Grid, makeStyles } from "@material-ui/core";
+import CustomAppBar from "./components/CustomAppBar";
+import ServoControl from "./components/ServoControl";
+
+const useStyles = makeStyles((theme) => ({
+    root: {
+        flexGrow: 1,
+        paddingLeft: theme.spacing(2),
+        paddingRight: theme.spacing(2)
+    }
+}));
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+    const classes = useStyles();
+
+    return (
+        <>
+            <CustomAppBar />
+            <Grid container className={classes.root}>
+                <Grid item>
+                    <ServoControl />
+                </Grid>
+            </Grid> 
+        </>
+    );
 }
 
 export default App;
