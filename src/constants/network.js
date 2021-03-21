@@ -1,0 +1,1 @@
+export const DEFAULT_SOCKET_ENDPONT = "http://localhost:8000";
