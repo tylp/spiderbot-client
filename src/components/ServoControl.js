@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Button, Card, CardActions, CardContent, CardHeader, Slider, Typography } from '@material-ui/core';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import IconButton from '@material-ui/core/IconButton';
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles, useTheme } from '@material-ui/core/styles';
 import useSocket from '../hooks/useSocket';
 import { SERVO_TOPIC } from '../constants/topics';
 
@@ -20,6 +20,19 @@ const useStyles = makeStyles((theme) => ({
     slider: {
         paddingTop: '10px',
         paddingBottom: theme.spacing(3)
+    },
+    svg: {
+        marginLeft: 5,
+        "& #poly2": {
+            transform: 'translate(10%)',
+            transition: 'all .5s ease' // Back to orig. state when exiting :hover smoothly
+        }
+    },
+    sendbtn: {
+        "&:hover #poly2" : {
+            transition: 'all .5s ease',
+            transform: "translate(30%)",
+        }
     }
 }));
 
@@ -28,6 +41,7 @@ export default function ServoControl() {
     const classes = useStyles();
     const [value, setValue] = useState(0);
     const socket = useSocket();
+    const theme = useTheme();
 
     useEffect(() => {
         if (socket) {
@@ -76,7 +90,13 @@ export default function ServoControl() {
                     />
                 </CardContent>
                 <CardActions>
-                    <Button variant="contained" color="primary" onClick={emmitData}>Execute</Button>
+                    <Button className={classes.sendbtn} variant="contained" color="primary" onClick={emmitData}>    
+                        Execute 
+                        <svg className={classes.svg} xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 43 33">
+                            <path id='poly1' data-name="Polygone 1" d="M22.468 12.9a3 3 0 010 5.2L4.494 28.42A3 3 0 010 25.819V5.181a3 3 0 014.494-2.6z" fill={theme.palette.text.secondary}/>
+                            <path id='poly2' data-name="Polygone 2" d="M28.468 12.9a3 3 0 010 5.2L10.494 28.42A3 3 0 016 25.819V5.181a3 3 0 014.494-2.6z" fill={theme.palette.text.primary}/>
+                        </svg>
+                    </Button>
                 </CardActions>
             </Card>
         </div >
