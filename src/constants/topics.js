@@ -1,1 +1,0 @@
-export const SERVO_TOPIC = "servo-control-topic";
