@@ -4,6 +4,7 @@
   "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
   "main": "server.js",
   "scripts": {
+    "client": "next dev",
     "dev": "nodemon server.js",
     "build": "next build",
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -21,15 +22,26 @@
   },
   "homepage": "https://github.com/tylp/spiderbot-client#readme",
   "dependencies": {
+    "@emotion/cache": "latest",
+    "@emotion/react": "^11.7.1",
+    "@emotion/server": "latest",
+    "@emotion/styled": "^11.6.0",
+    "@mui/icons-material": "latest",
+    "@mui/material": "^5.2.8",
     "amqplib": "^0.8.0",
     "express": "^4.17.2",
+    "luxon": "^2.3.0",
     "next": "^12.0.7",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "recharts": "^2.1.8",
     "socket.io": "^4.4.0",
-    "socket.io-client": "^4.4.0"
+    "socket.io-client": "^4.4.0",
+    "styled-components": "^5.3.3"
   },
   "devDependencies": {
+    "autoprefixer": "^10.4.2",
+    "babel-plugin-styled-components": "^2.0.2",
     "jest": "^27.4.5",
     "nodemon": "^2.0.15"
   }

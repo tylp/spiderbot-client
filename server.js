@@ -22,10 +22,15 @@ io.on("connection", async (socket) => {
 		sendCommand(channel, data);
 	});
 
+	socket.on("ws-health-check-request", () => {
+		socket.emit("ws-health-check-reply");
+	});
+
 	socket.on("disconnect", data => {
 		console.info("client disconnected from websocket");
 		close(channel);
 	});
+
 });
 
 nextApp.prepare().then(() => {

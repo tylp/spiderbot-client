@@ -1,4 +1,8 @@
+import * as React from 'react';
 import useSocket from '../hooks/useSocket'
+import NavBar from '../components/NavBar';
+import FluxMonitoring from '../components/HealthMonitor';
+import { Grid } from '@mui/material';
 
 export default function Home() {
 
@@ -28,17 +32,16 @@ export default function Home() {
 		socket.emit('bot-commands', 'right');
 	}
 
-    return (
-    	<div>
-        	<p>Bot Controls</p>
-			<button onClick={stand}>Stand</button>
-			<button onClick={crouch}>Crouch</button>
-			<hr></hr>
-
-			<button onClick={forward}>Forward</button>
-			<button onClick={backward}>Backward</button>
-			<button onClick={left}>Left</button>
-			<button onClick={right}>Right</button>
-    	</div>
-  	)
+	return (
+		<>
+			<NavBar />
+			
+			<Grid container alignItems={"center"} justifyContent={"right"} padding={3}>
+				<Grid item xs={3}>
+					<FluxMonitoring title="WS" color='#ab003c' />
+				</Grid>
+				
+			</Grid>
+		</>
+	)
 }

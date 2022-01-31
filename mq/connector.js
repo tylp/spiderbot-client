@@ -3,7 +3,7 @@ const amqp = require('amqplib/callback_api');
 const COMMAND_QUEUE = "command-queue";
 const DATA_QUEUE = "data-queue";
 
-function connectAndCreateChannel(url = 'amqp://localhost') {
+async function connectAndCreateChannel(url = 'amqp://localhost') {
     return new Promise((resolve, reject) => {
         amqp.connect(url, (connectError, connection) => {
 
